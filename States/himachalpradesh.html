@@ -1,0 +1,266 @@
+<html>
+  <head>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td,
+      th {
+        padding: 10px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onLoad="javascript:convert()">
+    <h1>Andhra Pradesh</h1>
+    <div id="container"></div>
+    <script>
+      // Function to convert JSON data to HTML table
+      function convert() {
+        // Sample JSON data
+        let jsonData = [
+          {
+            Place: "Coringa Wild Life Sanctury",
+            City: "Kakinada",
+            Status: "Visited",
+          },
+          {
+            Place: "kkd beach",
+            City: "Kakinada",
+            Status: "Visited",
+          },
+          {
+            Place: "uppada beach",
+            City: "Kakinada",
+            Status: "Visited",
+          },
+          {
+            Place: "Charminar",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Golconda Fort",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Shri Jagannath Temple",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Shilparamam",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Hussain Sagar",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Lumbini Park",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Biodiversity Complex ",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Birla mandir",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Birla science museum",
+            City: "Hyderabad ",
+            Status: "Visited",
+          },
+          {
+            Place: "Ramoji Film City",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Ananthagiri Hills",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Salar jang Museum",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Shri Jagannath temple",
+            City: "Hyderabad ",
+            Status: "Visited",
+          },
+          {
+            Place: "Andhra Sabarimala",
+            City: "",
+            Status: "Visited",
+          },
+          {
+            Place: "Nehru Zooligical Park",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Papi Kondalu",
+            City: "",
+            Status: "Visited",
+          },
+          {
+            Place: "Watch  Tower",
+            City: "vizianagaram",
+            Status: "Visited",
+          },
+          {
+            Place: "Kailasagiri",
+            City: "VSKP",
+            Status: "Visited",
+          },
+          {
+            Place: "Indira Gandhi Zoological Park",
+            City: "VSKP",
+            Status: "Visited",
+          },
+          {
+            Place: "Eat Sreet",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Vanajangi",
+            City: "Vanajangi",
+            Status: "Visited",
+          },
+          {
+            Place: "boora caves",
+            City: "Araku",
+            Status: "Visited",
+          },
+          {
+            Place: "padampuram botanical garden",
+            City: "Araku",
+            Status: "Visited",
+          },
+          {
+            Place: "galikonda view point",
+            City: "Araku",
+            Status: "Visited",
+          },
+          {
+            Place: "coffee museum",
+            City: "Araku",
+            Status: "Visited",
+          },
+          {
+            Place: "chaparai waterfall",
+            City: "Araku",
+            Status: "Visited",
+          },
+          {
+            Place: "Qutab Shahi Tombs\n",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Sudha Car Museum",
+            City: "Hyderabad",
+            Status: "Visited",
+          },
+          {
+            Place: "Kanipakam Temple",
+            City: "Tirupati",
+            Status: "Visited",
+          },
+          {
+            Place: "Srikalahasti Temple",
+            City: "Tirupati",
+            Status: "Visited",
+          },
+          {
+            Place: "Srivari Padalu",
+            City: "Tirumala",
+            Status: "Visited",
+          },
+          {
+            Place: "Silathoranam",
+            City: "Tirumala",
+            Status: "Visited",
+          },
+          {
+            Place: "Srivari Mettu",
+            City: "Tirumala",
+            Status: "Visited",
+          },
+          {
+            Place: "Rock Garden",
+            City: "Tirumala",
+            Status: "Visited",
+          },
+          {
+            Place: "Sri Padmavathi Ammavari",
+            City: "Tirupati",
+            Status: "Visited",
+          },
+          {
+            Place: "Vemulawada Temple ",
+            City: "Karimnagar",
+            Status: "Visited",
+          },
+        ];
+
+        // Get the container element where the table will be inserted
+        let container = document.getElementById("container");
+
+        // Create the table element
+        let table = document.createElement("table");
+
+        // Get the keys (column names) of the first object in the JSON data
+        let cols = Object.keys(jsonData[0]);
+
+        // Create the header element
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+
+        // Loop through the column names and create header cells
+        cols.forEach((item) => {
+          let th = document.createElement("th");
+          th.innerText = item; // Set the column name as the text of the header cell
+          tr.appendChild(th); // Append the header cell to the header row
+        });
+        thead.appendChild(tr); // Append the header row to the header
+        table.append(tr); // Append the header to the table
+
+        // Loop through the JSON data and create table rows
+        jsonData.forEach((item) => {
+          let tr = document.createElement("tr");
+
+          // Get the values of the current object in the JSON data
+          let vals = Object.values(item);
+
+          // Loop through the values and create table cells
+          vals.forEach((elem) => {
+            let td = document.createElement("td");
+            td.innerText = elem; // Set the value as the text of the table cell
+            tr.appendChild(td); // Append the table cell to the table row
+          });
+          table.appendChild(tr); // Append the table row to the table
+        });
+        container.appendChild(table); // Append the table to the container element
+      }
+    </script>
+  </body>
+</html>
